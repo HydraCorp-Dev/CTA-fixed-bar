@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo CTA App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    /* Banner */
+    .cta-app-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #555; /* cor estilo Folha */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      font-size: 14px;
+      z-index: 9999;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .cta-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .cta-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
+
+    .cta-action {
+      background: white;
+      color: #004591;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 14px;
+      white-space: nowrap;
+    }
+
+    .cta-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      margin-left: 12px;
+      cursor: pointer;
+    }
+
+    /* Animação fechar */
+    .cta-app-banner.hide {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    /* Só aparece em mobile */
+    @media (min-width: 768px) {
+      .cta-app-banner {
+        display: none;
+      }
+    }
+
+    /* Conteúdo de exemplo */
+    .content {
+      padding: 80px 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner CTA -->
+  <div class="cta-app-banner" id="ctaAppBanner">
+    <div class="cta-left">
+        <button class="cta-close" id="ctaCloseBtn">×</button>
+      <img src="https://via.placeholder.com/28" alt="Logo App" class="cta-logo">
+      <span>Baixe o app do Nosso Site de graça</span>
+    </div>
+    <a id="ctaDownloadBtn" href="#" class="cta-action">BAIXAR ›</a>
+  </div>
+
+  <!-- Conteúdo de exemplo -->
+  <div class="content">
+    <h1>Bem-vindo ao site</h1>
+    <p>
+      Este é um exemplo de página com um banner fixo no topo para incentivar
+      o download do aplicativo. O conteúdo real ficaria aqui.
+    </p>
+    <p>
+      Role a página para ver que o banner continua fixo no topo.
+    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, 
+    ligula nec viverra tempor, urna lacus efficitur turpis, et fermentum nunc 
+    mauris a nulla.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, 
+    ligula nec viverra tempor, urna lacus efficitur turpis, et fermentum nunc 
+    mauris a nulla.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, 
+    ligula nec viverra tempor, urna lacus efficitur turpis, et fermentum nunc 
+    mauris a nulla.</p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const btn = document.getElementById("ctaDownloadBtn");
+      const closeBtn = document.getElementById("ctaCloseBtn");
+      const bar = document.getElementById("ctaAppBanner");
+
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Detecta iOS ou Android
+      if (/android/i.test(ua)) {
+        btn.href = "https://play.google.com/store/apps/details?id=SEU_APP";
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        btn.href = "https://apps.apple.com/app/idSEU_APP";
+      } else {
+        btn.href = "#"; // fallback
+      }
+
+      // Fecha com animação
+      closeBtn.addEventListener("click", () => {
+        bar.classList.add("hide");
+        setTimeout(() => bar.remove(), 300); // remove após a animação
+      });
+    });
+  </script>
+</body>
+</html>
