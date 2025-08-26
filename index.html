@@ -7,11 +7,16 @@
   <style>
 
 
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    @font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500; /* normal */
+    font-style: normal;
+    }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: #f5f5f5;
     }
 
@@ -28,8 +33,6 @@
       justify-content: space-between;
       padding: 10px;
       font-size: 12px;
-      font-family: 'Roboto', sans-serif;
-      font-weight: bold;
       z-index: 9999;
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
